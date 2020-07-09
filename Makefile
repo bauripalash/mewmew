@@ -7,7 +7,7 @@ grammar:
 
 .PHONY: compile
 compile:
-	g++ mewlib/mewmew*.cpp main.cpp -o mewmew -lantlr4-runtime
+	c++ -std=c++11 mewlib/mewmew*.cpp main.cpp -o mewmew -lantlr4-runtime
 
 .PHONY: test
 test:

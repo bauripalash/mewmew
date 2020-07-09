@@ -13,20 +13,25 @@ command: assign
        | repeat
        ;
 
-assign : ID '=' expr ';'        # assignExpr
-           ;
+assign:   ID '=' expr ';'        # assignExpr
+        | ID '=' expr { notifyErrorListeners("Missing ';' at Assignment statement"); } # assignExprNoSemi
+        ;
 
-print : '::' expr ';'           # printExpr
-          ;
+print:    '::' expr ';'           # printExpr
+        | '::' expr               { notifyErrorListeners("Missing ';' at Meow Say statement"); } # printExprNoSemi
+        ;
 
-ifLoop    : expr '?' stmts ';' # ifExpr
+ifLoop:   expr '?' stmts ';' # ifExpr
+        | expr '?' stmts { notifyErrorListeners("Missing ';' at If statement"); } # ifExprNoSemi
+        ;
+
+ifElseLoop:   expr '?' stmts ':' stmts ';' # ifElseExpr
+            | expr '?' stmts ':' stmts {notifyErrorListeners("Missing ';' at If else statement");} # ifElseExprNoSemi
             ;
 
-ifElseLoop : expr '?' stmts ':' stmts ';' # ifElseExpr
-            ;
-
-repeat : '@' expr ':' stmts ';' #repeatExpr
-            ;
+repeat:   '@' expr ':' stmts ';' #repeatExpr
+        | '@' expr ':' stmts { notifyErrorListeners("Missing ';' at Meow Loop statement"); } #repeatExprNoSemi
+        ;
 
 expr: '~' expr                  # absExpr
     | '-' expr                  # unaryExpr
@@ -41,16 +46,24 @@ expr: '~' expr                  # absExpr
     | expr '==' expr            # eqExpr
     | expr '!=' expr            # neExpr
     | '(' expr ')'              # parensExpr
-    | NUM                       # numExpr
+    | MEWNUMBER                 # numExpr
     | ID                        # idExpr
     ;
 
 MUL : '*' ;
+
 DIV : '/' ;
+
 ADD : '+' ;
+
 SUB : '-' ;
 
+
+
 COMMENT : '//' .*? '\n' -> skip;
-NUM : '0'? [mew]+;
-ID : ('m' | 'w' | '_')+;
+
+MEWNUMBER : ([m][e][w])+ ('.' ([m][e][w])+)? ;
+
+ID : ([m][w_]*)+;
+
 WS : [ \t\r\n]+ -> skip;

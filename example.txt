@@ -1,9 +1,5 @@
-mw_ = mew;
-
-@mewmewmewmewmewmewmewmewmewmew:
-   mw_ % mewmew == mew-mew ?
-        ::mw_;
-   ;
-    
-    mw_ = mw_+mew;
+m = mew;
+@mewmewmewmewmewmewmewmewmewmew * mewmewmewmewmewmewmewmewmewmew:
+    m % mewmew == mew-mew ? ::m;;
+    m = m+mew;
 ;

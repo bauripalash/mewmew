@@ -3,6 +3,8 @@ mewlib/
 catlib/
 mewmew
 catlang
+x
+x.cpp
 
 # Prerequisites
 *.d

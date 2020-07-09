@@ -7,6 +7,13 @@ if(NOT ANTLR_EXE)
         )
 endif()
 
+if(NOT ANTLR_LIB)
+    set(ANTLR_LIB
+        /usr/local/lib/libantlr4-runtime.a
+        )
+
+endif()
+
 set(grammar-src ${PROJECT_SOURCE_DIR}/mewmew.g4)
 
 set(antlr4-outlib
@@ -27,5 +34,5 @@ ADD_CUSTOM_TARGET(GenParser ALL
 add_executable(mewmew ${antlr4-outlib} ${PROJECT_SOURCE_DIR}/main.cpp)
 
 ADD_DEPENDENCIES(mewmew GenParser)
-target_link_libraries(mewmew /usr/local/lib/libantlr4-runtime.a)
+target_link_libraries(mewmew ${ANTLR_LIB})
 
