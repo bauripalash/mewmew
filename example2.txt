@@ -1,1 +1,6 @@
-::mew == mew & mewmewmew;
+m = mew;
+@#####(mew):
+    m % mewmew == mew - mew ? ::m;;
+    m = m+mew;
+
+;
