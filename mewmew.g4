@@ -45,6 +45,8 @@ expr: '~' expr                  # absExpr
     | expr '>=' expr            # geExpr
     | expr '==' expr            # eqExpr
     | expr '!=' expr            # neExpr
+    | expr '&' expr             # andExpr
+    | expr '|' expr             # orExpr
     | '(' expr ')'              # parensExpr
     | MEWNUMBER                 # numExpr
     | ID                        # idExpr

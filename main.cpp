@@ -12,6 +12,7 @@
 #include "mewlib/mewmewLexer.h"
 #include "mewlib/mewmewParser.h"
 #include "mewlib/mewmewBaseVisitor.h"
+#include <chrono>
 
 // =================== END INCLUDES ======================
 
@@ -211,9 +212,9 @@ public:
     
     /*
      * ---------------------------------------------------
-     *  Handles Modulas (%) Statements
+     *  Handles Modulus (%) Statements
      *  
-     *  It returns modulas of two given expression
+     *  It returns modulus of two given expression
      *
      * -> m = mewmewmew % mewmew;
      * -> ::m;
@@ -323,7 +324,7 @@ public:
      *  returns 1 (True) if left expression is equal to
      *  right expressions otherwise returns 0 (False).
      *
-     * -> m = mewmew == mewew ;
+     * -> m = mewmew == mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -348,7 +349,7 @@ public:
      *  returns 1 (True) if left expression is greater than equal to
      *  right expressions otherwise returns 0 (False).
      *
-     * -> m = mewmewmew >= mewew ;
+     * -> m = mewmewmew >= mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -371,7 +372,7 @@ public:
      *  returns 1 (True) if left expression is greater than
      *  right expressions otherwise returns 0 (False).
      *
-     * -> m = mewmewmew > mewew ;
+     * -> m = mewmewmew > mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -394,7 +395,7 @@ public:
      *  equal to right expressions otherwise returns 0 
      *  (False).
      *
-     * -> m = mew <= mewew ;
+     * -> m = mew <= mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -417,7 +418,7 @@ public:
      *  returns 1 (True) if left expression is less than
      *  right expressions otherwise returns 0 (False).
      *
-     * -> m = mew < mewew ;
+     * -> m = mew < mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -440,7 +441,7 @@ public:
      *  returns 1 (True) if left expression is not equal to
      *  right expressions otherwise returns 0 (False).
      *
-     * -> m = mew != mewew ;
+     * -> m = mew != mewmew ;
      * -> ::m ;
      * => 1
      * ---------------------------------------------------
@@ -451,6 +452,50 @@ public:
         float right = visit(ctx->expr(1));
         float result = left != right;
 
+        return result;
+
+    }
+
+    /*
+     * ---------------------------------------------------
+     *  Handles And (&) Expressions
+     *
+     *  First evaluates left and right expressions , then
+     *  returns 1 (True) if both expression are truthy
+     *  otherwise returns 0 (False).
+     *
+     * -> m = mew == mew & mewmew == mewmew;
+     * -> ::m ;
+     * => 1
+     * ---------------------------------------------------
+     */
+
+    antlrcpp::Any visitAndExpr(mewmewParser::AndExprContext *ctx) override{
+        float left = visit(ctx->expr(0));
+        float right = visit(ctx->expr(1));
+        float result = left && right;
+        return result;
+
+    }
+
+    /*
+     * ---------------------------------------------------
+     *  Handles Or (|) Expressions
+     *
+     *  First evaluates left and right expressions , then
+     *  returns 1 (True) if any of the expression is 
+     *  truthy otherwise returns 0 (False).
+     *
+     * -> m = mew == mewmew | mewmew == mewmew;
+     * -> ::m ;
+     * => 1
+     * ---------------------------------------------------
+     */
+
+    antlrcpp::Any visitOrExpr(mewmewParser::OrExprContext *ctx) override{
+        float left = visit(ctx->expr(0));
+        float right = visit(ctx->expr(1));
+        float result = left || right;
         return result;
 
     }
@@ -487,7 +532,7 @@ public:
      *  Handles Number (mewmew......) Expressions
      *
      *  First it extracts the mewmew... string , with help
-     *  of utiliy function `mew_to_float` function , it
+     *  of utility function `mew_to_float` function , it
      *  converts the string to an equivalent float value.
      *
      *  Mew Numbers can contain decimal (.) to make a 
@@ -643,9 +688,12 @@ int main(int argc, char **argv) {
     ifstream infile(path);
     
     if(infile.good()){          // Checks if file exits
+        auto start = chrono::high_resolution_clock::now();
         infile.close();
         ANTLRFileStream filename(path);
         parse(filename);
+        auto stop = chrono::high_resolution_clock::now();
+        cout << "-- " << chrono::duration_cast<chrono::microseconds>(stop-start).count() << " --" << endl;
     }else{
         cout << "MEOW!! File '" << path << "' " << "Doesn't Exist!" << endl;
     }

@@ -1,5 +1,5 @@
 m = mew;
 @mewmewmewmewmewmewmewmewmewmew * mewmewmewmewmewmewmewmewmewmew:
-    m % mewmew == mew-mew ? ::m;;
+    m % mewmewmew == mew-mew & m % mewmewmewmewmew == mew - mew ? ::m;;
     m = m+mew;
 ;
