@@ -78,6 +78,22 @@ float mew_to_float(string m){
 
 }
 
+float execute_underscore(int count , float expr){
+    
+    float result;
+
+    switch (count) {
+        case 1: result = sqrt(expr); break;
+        case 2: result = expr * 2; break;
+        case 3: result = expr * 5; break;
+        case 4: result = expr * 10; break;
+        case 5: result = expr * 100; break;
+        default: result = expr;
+    }
+
+    return result;
+}
+
 // ================ END UTILITY FUNCTIONS ==================
 
 //==========================================================
@@ -188,6 +204,14 @@ public:
         return abs(expr);
 
    } 
+
+   antlrcpp::Any visitScratchExpr(mewmewParser::ScratchExprContext *ctx) override{
+        
+        string us  = ctx->SCRATCH()->toString();
+        float expr = visit(ctx->expr());
+        return execute_underscore(us.length() , expr);
+
+   }
 
     /*
      * ---------------------------------------------------

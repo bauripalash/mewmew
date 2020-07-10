@@ -35,6 +35,7 @@ repeat:   '@' expr ':' stmts ';' #repeatExpr
 
 expr: '~' expr                  # absExpr
     | '-' expr                  # unaryExpr
+    | SCRATCH '(' expr ')'      # scratchExpr
     | expr '**' expr            # PowExpr
     | expr op=('*' | '/') expr  # MulDivExpr
     | expr op=('+' | '-') expr  # AddSubExpr
@@ -59,6 +60,8 @@ DIV : '/' ;
 ADD : '+' ;
 
 SUB : '-' ;
+
+SCRATCH : [#]+ ;
 
 
 
