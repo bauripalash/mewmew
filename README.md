@@ -65,6 +65,30 @@ Where `TIMES` can be any mew number , and the `BODY` will be executed `TIMES` ti
 
 To write a comment , start the sentence with `//`
 
+## 🎁 Example Programs:
+(Two Examples are provided in the repo)
+
+```
+//Addition
+
+m = mewmew + mewmewmew;
+::m;
+
+OUTPUT: 5
+```
+
+```
+// Print All Numbers Divisible by 2 under 100
+m = mew;
+@#####(mew):
+    m % mewmew == mew - mew ? ::m;;
+    m = m+mew;
+
+;
+```
+
+
+
 ## 📑 NOTEs:
 *  MewMew is an esoteric language , it was never intended to be used for mainstream programming.
 *  MewMew is only tested on Linux device (Ubuntu 18.04 x86_64). Building on Windows or MacOS should not be difficult , Please let me know , if you build it on either Windows or MacOs.
