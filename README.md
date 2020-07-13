@@ -5,7 +5,7 @@ MewMew 🐱 is an Esoteric `Just for Fun` programming language. You can use MewM
 
 ## 🎉 Get Started
 #### 😸 Integers
-There's no concept of numbers (eg. 1 2 3 4 100) in MewMew, instead we use `mew`s. 1 `mew` is equal to 1 , therefor `mewmew` = 2 , `mewmewmew` = 3 , `mewmewmewmewmewmewmewmewmewmew` = 10. (You got the Idea right)
+There's no concept of numbers (eg. 1 2 3 4 100) in MewMew, instead we use `mew`s. 1 `mew` is equal to 1 , therefor `mewmew` = 2 , `mewmewmew` = 3 , `mewmewmewmewmewmewmewmewmewmew` = 10 and `mew-mew` = 0. (You got the Idea, right)
 
 #### 😸 Operators
 **MewMew supports a few types of operators =>**
