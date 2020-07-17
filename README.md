@@ -1,7 +1,10 @@
-# /ᐠ｡ꞈ｡ᐟ\ MewMew Programming Language
-### Program in Cats' Language
+![/ᐠ｡ꞈ｡ᐟ\ MewMew Programming Language](./media/Banner.png)
 
-MewMew 🐱 is an Esoteric `Just for Fun` programming language. You can use MewMew to program in cats' language.
+
+[![.](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![.](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+
+/ᐠ｡ꞈ｡ᐟ\ MewMew 🐱 is an Esoteric `Just for Fun` programming language. You can program in cats' language with MewMew. Have Fun!
 
 ## 🎉 Get Started
 #### 😸 Integers
