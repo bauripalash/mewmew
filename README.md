@@ -4,7 +4,9 @@
 [![.](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![.](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
-/ᐠ｡ꞈ｡ᐟ\ MewMew 🐱 is an Esoteric `Just for Fun` programming language. You can program in cats' language with MewMew. Have Fun!
+**Give a Star 🌟 to this project to support this project**
+
+#### /ᐠ｡ꞈ｡ᐟ\ MewMew 🐱 is an Esoteric `Just for Fun` programming language. You can program in cats' language with MewMew. Have Fun!
 
 ## 🎉 Get Started
 #### 😸 Integers
