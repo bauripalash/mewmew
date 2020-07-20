@@ -6,8 +6,13 @@ catlang
 x
 x.cpp
 
+
+*.jar
+antlr4-cpp-runtime-4.8-source.zip
+antlr-cpp-runtime/
 # Prerequisites
 *.d
+*.1
 
 # Compiled Object files
 *.slo
