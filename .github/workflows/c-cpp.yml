@@ -21,6 +21,8 @@ jobs:
         path: |
           ./antlr-cpp-runtime
         key: ${{ runner.os }}-${{ hashFiles('antlr-cpp-runtime') }}
+    - name: DEPENDENCIES
+      run: sudo apt install uuid
     - name: BUILD
       run: make build
     - name: TEST
