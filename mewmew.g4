@@ -22,8 +22,7 @@ print:    '::' expr ';'           # printExpr
         | '::' expr               { notifyErrorListeners("Missing ';' at Meow Say statement"); } # printExprNoSemi
         ;
 
-scan:   ID '<:' ';'                 # scanExpr
-        | ID '<:' ';;'              # scanWithNlExpr
+scan:   ID '<<' ';'                 # scanExpr
         | ID '<:'                 { notifyErrorListeners("Missing ';' at Meow Scan statement"); } # scanExprNoSemi
         ;
 

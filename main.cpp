@@ -65,7 +65,7 @@ float mew_to_float(string m){
         float n;
         
         if (!(m.find("mew") != string::npos)){
-            throw runtime_error("Meow Error : Invalid MewNumber!");
+            throw runtime_error("Meow Error : Invalid Mew Number!");
         }
 
         if (m.find(".") != string::npos){
@@ -84,7 +84,7 @@ float mew_to_float(string m){
     }
     catch(runtime_error &e){
 
-        cerr << e.what() << endl;
+        cerr << "/ᐠx ‸xᐟ\\ " << e.what() << endl;
         exit(-1);
     }
 
@@ -132,7 +132,7 @@ class MewErr : public BaseErrorListener{
     public:
         void syntaxError(Recognizer *recognizer, Token *offendingSymbol, size_t line, size_t charPositionInLine, const std::string &msg, std::exception_ptr e) override{
         underlineError(recognizer, offendingSymbol, line, charPositionInLine);
-        cout << "/ᐠ–ꞈ–ᐟ\\ Syntax Error! at line " << line << " -> " << msg << endl; 
+        cout << "/ᐠx ‸xᐟ\\ Syntax Error! at line " << line << " -> " << msg << endl; 
 
         }
 
@@ -148,8 +148,8 @@ class MewErr : public BaseErrorListener{
             int start = offendingSymbol->getStartIndex();
             int stop = offendingSymbol->getStopIndex();
             if (start>=0 && stop >=0){
-                    for(int i = start; i<= stop ; ++i) cout << u8"^";
-            }
+                    for(int i = start; i<= stop ; ++i) cout << u8"\e[31m^";
+            }            
             cout << "\e[39m\n";
         }
 
@@ -631,6 +631,8 @@ public:
         return 0;
 
    } 
+
+
 
     /*
      * ---------------------------------------------------
