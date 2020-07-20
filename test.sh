@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Error Counter
 e=0
 
 echo "---  Starting Test  ---"
