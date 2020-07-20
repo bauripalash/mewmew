@@ -13,6 +13,6 @@ make
 export DESTDIR=../run make install
 cd ..
 cd ..
-java -jar antlr-4.8-complete.jar -Dlanguage=Cpp -no-listener -visitor -o mewlib
+java -jar antlr-4.8-complete.jar -Dlanguage=Cpp -no-listener -visitor mewmew.g4 -o mewlib
 c++ -std=c++11 -I./antlr-cpp-runtime/runtime/src mewlib/mewmew*.cpp main.cpp ./antlr-cpp-runtime/dist/libantlr4-runtime.a -o mewmew
 
