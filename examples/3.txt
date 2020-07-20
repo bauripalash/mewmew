@@ -1,5 +1,5 @@
 // Factorial Example
-m <:;
+m = mewmewmewmewmew;
 m_ = mew;
 @m:
     m_ = m_ * m;

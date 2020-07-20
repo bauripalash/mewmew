@@ -11,7 +11,7 @@ compile:
 
 .PHONY: test
 test:
-	./mewmew example.txt
+	./test.sh
 
 .PHONY: clean
 clean:
