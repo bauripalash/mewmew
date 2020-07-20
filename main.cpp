@@ -6,6 +6,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <map>
 #include <vector>
@@ -13,7 +14,7 @@
 #include "mewlib/mewmewParser.h"
 #include "mewlib/mewmewBaseVisitor.h"
 #include <chrono>
-
+#include <regex>
 // =================== END INCLUDES ======================
 
 //========================================================
@@ -60,21 +61,32 @@ vector<string> stringsplit(string input , string delimiter){
  */
 
 float mew_to_float(string m){
-    float n;
+    try{
+        float n;
+        
+        if (!(m.find("mew") != string::npos)){
+            throw runtime_error("Meow Error : Invalid MewNumber!");
+        }
 
-    if (m.find(".") != string::npos){
-        vector<string> sp = stringsplit(m , ".");
-        string x = "";
-        x+= to_string(sp[0].size()/3);
-        x+= ".";
-        x+= to_string(sp[1].size()/3);
-        n = stof(x);
+        if (m.find(".") != string::npos){
+            vector<string> sp = stringsplit(m , ".");
+            string x = "";
+            x+= to_string(sp[0].size()/3);
+            x+= ".";
+            x+= to_string(sp[1].size()/3);
+            n = stof(x);
 
-    }else{
-        n = m.size()/3;
+        }else{
+            n = m.size()/3;
+        }
+
+        return n;
     }
+    catch(runtime_error &e){
 
-    return n;
+        cerr << e.what() << endl;
+        exit(-1);
+    }
 
 }
 
@@ -92,6 +104,21 @@ float execute_underscore(int count , float expr){
     }
 
     return result;
+}
+
+bool is_formalnum(string s){
+
+    regex r("-?[0-9]+([\\.][0-9]+)?");
+    if (regex_match(s , r)){
+        
+        return true;
+
+    }else{
+            
+        return false;
+    
+    }
+
 }
 
 // ================ END UTILITY FUNCTIONS ==================
@@ -579,6 +606,32 @@ public:
 
     }
 
+   antlrcpp::Any visitScanExpr(mewmewParser::ScanExprContext *ctx) override{
+        string id = ctx->ID()->toString();
+        float value;
+        string _temp;
+        cin >> _temp;
+
+        if (is_formalnum(_temp)){
+            value = stof(_temp);
+        }else{
+            value = mew_to_float(_temp);
+
+            if (_temp[0] == '-'){
+                value = -value;
+            }
+        }
+
+        /* cout << value << endl; */
+        if (_vartable.count(id)){               // <--------- a1
+        _vartable[id] = value;              // <--------- a2
+        }else{
+            _vartable.insert(pair<string , float>(id , value));         // <--------a3
+        }
+        return 0;
+
+   } 
+
     /*
      * ---------------------------------------------------
      *  Handles If Statements
@@ -712,12 +765,12 @@ int main(int argc, char **argv) {
     ifstream infile(path);
     
     if(infile.good()){          // Checks if file exits
-        auto start = chrono::high_resolution_clock::now();
+        /* auto start = chrono::high_resolution_clock::now(); */
         infile.close();
         ANTLRFileStream filename(path);
         parse(filename);
-        auto stop = chrono::high_resolution_clock::now();
-        cout << "-- " << chrono::duration_cast<chrono::microseconds>(stop-start).count() << " --" << endl;
+        /* auto stop = chrono::high_resolution_clock::now(); */
+        /* cout << "-- " << chrono::duration_cast<chrono::microseconds>(stop-start).count() << " --" << endl; */
     }else{
         cout << "MEOW!! File '" << path << "' " << "Doesn't Exist!" << endl;
     }

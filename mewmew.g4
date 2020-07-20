@@ -8,6 +8,7 @@ stmts: command+
 
 command: assign
        | print
+       | scan
        | ifLoop
        | ifElseLoop
        | repeat
@@ -19,6 +20,11 @@ assign:   ID '=' expr ';'        # assignExpr
 
 print:    '::' expr ';'           # printExpr
         | '::' expr               { notifyErrorListeners("Missing ';' at Meow Say statement"); } # printExprNoSemi
+        ;
+
+scan:   ID '<:' ';'                 # scanExpr
+        | ID '<:' ';;'              # scanWithNlExpr
+        | ID '<:'                 { notifyErrorListeners("Missing ';' at Meow Scan statement"); } # scanExprNoSemi
         ;
 
 ifLoop:   expr '?' stmts ';' # ifExpr

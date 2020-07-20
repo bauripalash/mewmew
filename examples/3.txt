@@ -1,0 +1,8 @@
+// Factorial Example
+m <:;
+m_ = mew;
+@m:
+    m_ = m_ * m;
+    m = m - mew;
+;
+::m_; 
