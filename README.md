@@ -66,6 +66,10 @@ Where `TIMES` can be any mew number , and the `BODY` will be executed `TIMES` ti
 *   4 `#` returns 10 times the given expression
 *   5 `#` returns 100 times the given expression
 
+#### 😸 Scan (Read Mew or Traditional Number from Stdin)
+`ID << ;`
+Where ID is an variable identifier. The user will be prompted for a formal or mewmew number.
+
 #### 😸 Comments
 `//`
 
