@@ -68,6 +68,7 @@ Where `TIMES` can be any mew number , and the `BODY` will be executed `TIMES` ti
 
 #### 😸 Scan (Read Mew or Traditional Number from Stdin)
 `ID << ;`
+
 Where ID is an variable identifier. The user will be prompted for a formal or mewmew number.
 
 #### 😸 Comments
