@@ -4,6 +4,7 @@
 [![.](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![.](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 ![C/C++ CI](https://github.com/bauripalash/mewmew/workflows/C/C++%20CI/badge.svg)
+[![Version 0.2b](https://img.shields.io/badge/Version-0.2.beta-blue)](https://github.com/bauripalash/mewmew/releases)
 
 **Give a Star 🌟 to this project to support this project**
 
