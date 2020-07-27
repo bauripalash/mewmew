@@ -204,14 +204,38 @@ public:
      * ---------------------------------------------------
      */
 
-    antlrcpp::Any visitPrintExpr(mewmewParser::PrintExprContext *ctx) override{
+    
+    antlrcpp::Any visitPrintCharExpr(mewmewParser::PrintCharExprContext *ctx) override{
         
-        float ex = visit(ctx->expr());
-        cout << ex << endl;
+        vector<float> exprlist = visit(ctx->exprlist());
+        for (float item:exprlist) {
+            cout << char(item) ;
+        }
+        cout << endl;
         return 0;
 
     }
-    
+
+    antlrcpp::Any visitPrintExprList(mewmewParser::PrintExprListContext *ctx) override{
+        vector<float> exprlist = visit(ctx->exprlist());
+        for (float item:exprlist) {
+            cout << item ;
+        }
+        cout << endl;
+        return 0;
+    }
+
+   antlrcpp::Any visitExprListExpr(mewmewParser::ExprListExprContext *ctx) override{
+        
+       vector<float> elist;
+       for (int i = 0 ; i < ctx->expr().size() ; ++i){
+            float _temp = visit(ctx->expr(i));
+            elist.push_back(_temp);
+       }
+       return elist;
+
+   } 
+
     /*
      * ---------------------------------------------------
      *  Handles Abs Statements
