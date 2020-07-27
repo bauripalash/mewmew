@@ -3,7 +3,7 @@ grammar mewmew;
 prog: stmts
     ;
 
-stmts: command+
+stmts: command*
     ;
 
 command: assign
@@ -18,9 +18,12 @@ assign:   ID '=' expr ';'        # assignExpr
         | ID '=' expr { notifyErrorListeners("Missing ';' at Assignment statement"); } # assignExprNoSemi
         ;
 
-print:    '::' expr ';'           # printExpr
+print:    '::' exprlist ';'       # printExprList
+        | '::$' exprlist ';'          # printCharExpr
         | '::' expr               { notifyErrorListeners("Missing ';' at Meow Say statement"); } # printExprNoSemi
         ;
+
+
 
 scan:   ID '<<' ';'                 # scanExpr
         | ID '<:'                 { notifyErrorListeners("Missing ';' at Meow Scan statement"); } # scanExprNoSemi
@@ -36,6 +39,9 @@ ifElseLoop:   expr '?' stmts ':' stmts ';' # ifElseExpr
 
 repeat:   '@' expr ':' stmts ';' #repeatExpr
         | '@' expr ':' stmts { notifyErrorListeners("Missing ';' at Meow Loop statement"); } #repeatExprNoSemi
+        ;
+
+exprlist : expr (',' expr)* # exprListExpr
         ;
 
 expr: '~' expr                  # absExpr
