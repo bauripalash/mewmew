@@ -14,7 +14,6 @@
 #include "mewlib/mewmewParser.h"
 #include "mewlib/mewmewBaseVisitor.h"
 #include <chrono>
-#include <regex>
 // =================== END INCLUDES ======================
 
 //========================================================
@@ -108,16 +107,41 @@ float execute_underscore(int count , float expr){
 
 bool is_formalnum(string s){
 
-    regex r("-?[0-9]+([\\.][0-9]+)?");
-    if (regex_match(s , r)){
-        
-        return true;
+    int state = 0;
 
-    }else{
-            
-        return false;
-    
+    for (size_t i = 0; i < s.size(); i++) {
+        switch (state) {
+            case 0: // First digit of integer part
+                if (s[i] >= '0' && s[i] <= '9') {
+                    state = 1;
+                } else if (s[i] != '-' || i != 0) { // Number can start with a minus, but a digit will still be required
+                    return false; // Doesn't start with a digit or minus sign, not a number
+                }
+                break;
+            case 1: // Rest of integer part
+                if (s[i] == '.') {
+                    state = 2; // Start parsing decimal part
+                } else if (s[i] < '0' || s[i] > '9') {
+                    return false; // Not a digit or decimal point, not a number
+                }
+                break;
+            case 2: // First digit of decimal part
+                if (s[i] >= '0' && s[i] <= '9') {
+                    state = 3;
+                } else {
+                    return false; // Decimal point must be followed by at least one digit
+                }
+                break;
+            case 3: // Rest of decimal part
+                if (s[i] < '0' || s[i] > '9') {
+                    return false; // Not a digit, not a number
+                }
+                break;
+        }
+
     }
+
+    return state == 1 || state == 3;
 
 }
 
