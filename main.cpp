@@ -89,20 +89,21 @@ float mew_to_float(const string &m){
 
 }
 
-float execute_underscore(int count , float expr){
-    
-    float result;
-
+float execute_underscore(const int count , const float expr){
     switch (count) {
-        case 1: result = sqrt(expr); break;
-        case 2: result = expr * 2; break;
-        case 3: result = expr * 5; break;
-        case 4: result = expr * 10; break;
-        case 5: result = expr * 100; break;
-        default: result = expr;
+        case 1:
+            return sqrt(expr);
+        case 2:
+            return expr * 2;
+        case 3:
+            return expr * 5;
+        case 4:
+            return expr * 10;
+        case 5:
+            return expr * 100;
+        default:
+            return expr;
     }
-
-    return result;
 }
 
 bool is_formalnum(const string &s){
