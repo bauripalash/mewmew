@@ -89,7 +89,7 @@ float mew_to_float(const string &m){
 
 }
 
-float execute_underscore(const int count , const float expr){
+float execute_scratch_func(const int count , const float expr){
     switch (count) {
         case 1:
             return sqrt(expr);
@@ -285,7 +285,7 @@ public:
         
         string us  = ctx->SCRATCH()->toString();
         float expr = visit(ctx->expr());
-        return execute_underscore(us.length() , expr);
+        return execute_scratch_func(us.length() , expr);
 
    }
 
