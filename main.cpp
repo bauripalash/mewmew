@@ -37,7 +37,7 @@ map<string, float> _vartable; // VARTABLE aka. Symbol Table to Hold Variables
  *  Splits a String with given delimiter
  * -------------------------------------------------------
  */
-vector<string> stringsplit(string input , string delimiter){
+vector<string> stringsplit(string input , const string &delimiter){
 
     string token;
     vector<string> result;
@@ -59,7 +59,7 @@ vector<string> stringsplit(string input , string delimiter){
  * ------------------------------------------------------
  */
 
-float mew_to_float(string m){
+float mew_to_float(const string &m){
     try{
         float n;
         
@@ -105,7 +105,7 @@ float execute_underscore(int count , float expr){
     return result;
 }
 
-bool is_formalnum(string s){
+bool is_formalnum(const string &s){
 
     int state = 0;
 
