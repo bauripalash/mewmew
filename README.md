@@ -48,7 +48,7 @@ There's no keyword , to print we use the `::` symbol, for example
 #### 😸 Print Char
 Same as print , there's no keyword. It prints the ASCII char from the mew number given
 
-`::$####(mew) * mewmewmewmewmewmewmew + mewmew` , Output = `H`
+`::$ ####(mew) * mewmewmewmewmewmewmew + mewmew` , Output = `H`
 
 #### 😸 If
 `CONDITION ? TRUTH_BODY ;`
