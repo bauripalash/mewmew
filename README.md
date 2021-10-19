@@ -104,7 +104,9 @@ m = mew;
 ;
 ```
 
-
+[TODO]
+□ Build the whole thing again
+□ Ditch C++, use plain C
 
 ## 📑 NOTEs:
 *  MewMew is an esoteric language , it was never intended to be used for mainstream programming.
