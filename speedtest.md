@@ -1,5 +1,8 @@
 # MewMew Speed Test
 ## Using C++ chrono library
+### For God's sake use, plain C. C is awesome. C++ is unnecessarily complex.
+### Ditch ANTRL -> I don't like Java
+### F java -> F C++
 
 ### Tests (in microseconds , average of five)
 
