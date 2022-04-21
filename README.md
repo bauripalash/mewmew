@@ -1,5 +1,7 @@
 ![/ᐠ｡ꞈ｡ᐟ\ MewMew Programming Language](./media/Banner.png)
 
+## MewMew is **dead**. Checkout [Mewl, program in cats' language](https://github.com/bauripalash/mewl)
+
 
 [![.](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![.](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
